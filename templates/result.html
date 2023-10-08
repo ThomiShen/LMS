@@ -1,0 +1,40 @@
+{% extends "base.html" %}
+
+{% block page_content %}
+<div class="mdui-container mdui-m-t-5">
+    <h3 class="mb-4 mdui-text-center">这位是：{{ name }}</h3>
+    <div class="mdui-row">
+        <!-- 左侧基本信息 -->
+        <div class="mdui-col-md-6 mdui-col-sm-12">
+            <div class="mdui-card">
+                <div class="mdui-card-primary">
+                    <div class="mdui-card-primary-title"><B>她的基本信息</B></div>
+                </div>
+                <div class="mdui-card-content">
+                    <p><span class="mdui-text-color-red">姓名:</span> {{ name }}</p>
+                    <p>年龄: {{ age }}</p>
+                    <p>综合得分: {{ score }}</p>
+                    <p>性别: {{ gender }}</p>
+                    <p>脸型: {{ face_shape }}</p>
+                    <p>是否戴眼镜: {{ glasses }}</p>
+                    <p>情感: {{ emotion }}</p>
+                    <p>气质: {{ temperament }}</p>
+                </div>
+            </div>
+        </div>
+        <!-- 右侧照片 -->
+        <div class="mdui-col-md-6 mdui-col-sm-12">
+            <div class="mdui-card">
+                <div class="mdui-card-primary">
+                </div>
+                <div class="mdui-card-media">
+                    <img src="{{ image_url }}" alt="Analyzed Image">
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="mdui-m-t-3">
+        <a href="{{ url_for('index') }}" class="mdui-btn mdui-btn-raised mdui-color-theme mdui-ripple">返回首页</a>
+    </div>
+</div>
+{% endblock %}

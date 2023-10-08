@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+{% block page_content %}
+    <div class="mdui-container mt-4">
+        <div class="mdui-row">
+            <div class="mdui-col-md-6 mdui-col-offset-md-3">
+                <div class="mdui-card">
+                    <div class="mdui-card-media">
+                        <img src="{{ url_for('static', filename='uploads/死胖子.jpg') }}" alt="About Us Banner">
+                        <div class="mdui-card-media-covered">
+                            <div class="mdui-card-primary">
+                                <div class="mdui-card-primary-title">关于我们</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="mdui-card-content">
+                        <p>我们是Love Management System，致力于为您提供最佳的恋爱管理解决方案。</p>
+                        <p>从音乐推荐到情感分析，我们提供了一系列的功能，帮助您更好地理解和管理您的恋爱生活。</p>
+                        <p>我们的团队是一群热衷于技术和恋爱的年轻人，我们相信技术可以带来更好的恋爱体验。</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

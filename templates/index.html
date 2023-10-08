@@ -1,0 +1,87 @@
+{% extends "base.html" %}
+
+{% block page_content %}
+{% with messages = get_flashed_messages(with_categories=true) %}
+    {% if messages %}
+        {% for category, message in messages %}
+            <div class="mdui-alert mdui-alert-{{ category }}">
+                {{ message }}
+            </div>
+        {% endfor %}
+    {% endif %}
+{% endwith %}
+
+{% set names = [["赵丽颖","脸型特点: 圆脸型 (天真的眼睛，小巧的嘴巴)"],["新垣结衣","脸型特点: 卵圆形脸型 (清纯的外貌，笑容甜美)"],["金泰妍","脸型特点: 心形脸型 (精致的五官，高鼻梁)"],["杨幂","脸型特点: 长脸型 (大眼睛，纤细的脸颊)"],["朴信惠","脸型特点: 方脸型 (清秀的外貌，深邃的眼眸)"]] %}
+{% set names2 = [["李冰冰","气质特点: 知性、优雅 (成熟的女性魅力和知性的气质)"],["柳岩","气质特点: 性感、活力 (其魅力四射和充满活力的个性受到欢迎)"],["林志玲","气质特点: 高贵、淑女 (高贵的气质和淑女的形象，特别是在一些大型晚会中的亮相)"],["石原里美","气质特点: 清纯、娇媚 (其清纯和娇媚的形象深受喜爱，特别是在一些日剧中的表现)"],["李居丽","气质特点: 少女、甜美 (人一种少女般的清新和甜美)"]] %}
+<div class="mdui-container mt-4">
+    <h3 class="mb-4 mdui-m-t-4">选择一张你喜欢的美女脸型</h3>
+    <form method="post" enctype="multipart/form-data">
+        <div class="mdui-row" id="image-container1">
+            {% for i in range(1, 6) %}
+            <div class="mdui-col-md-2 mdui-col-sm-6 image-item " data-image="大美女{{i}}.jpg">
+                <div class="mdui-card mdui-hoverable">
+                    <div class="mdui-card-media ">
+                        <img src="{{ url_for('static', filename='reference/大美女'+i|string+'.jpg') }}" alt="Reference Image {{i}}" class="selectable">
+                    </div>
+                    <div class="mdui-card-primary">
+                        <div class="mdui-card-primary-title">{{ names[i-1][0] }}</div>
+                        <div class="mdui-card-content">{{names[i-1][1]}}</div>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+      <div class="mdui-divider-inset"></div>
+        <h3 class="mb-4 mdui-m-t-4">选择一张你喜欢的气质美图</h3>
+        <div class="mdui-row" id="image-container2">
+            {% for i in range(1, 6) %}
+            <div class="mdui-col-md-2 mdui-col-sm-6 image-item" data-image="气质{{i}}.jpg">
+                <div class="mdui-card mdui-hoverable">
+                    <div class="mdui-card-media">
+                        <img src="{{ url_for('static', filename='reference/气质'+i|string+'.jpg') }}" alt="Reference Image {{i}}" class="selectable">
+                    </div>
+                    <div class="mdui-card-primary">
+                        <div class="mdui-card-primary-title">{{ names2[i-1][0] }}</div>
+                        <div class="mdui-card-content">{{names2[i-1][1]}}</div>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+        <div class="mdui-textfield mdui-textfield-floating-label mt-4">
+            <input type="file" id="image" name="image" accept="image/*" class="mdui-textfield-input">
+            <label class="mdui-textfield-label">选择图片</label>
+        </div>
+        <button type="submit" class="mdui-btn mdui-btn-raised mdui-color-theme mdui-ripple mt-4 ">上传并分析</button>
+    </form>
+</div>
+
+<script>
+// Handle click event for image-container1
+document.querySelector('#image-container1').addEventListener('click', function(e) {
+    if (e.target.tagName === 'IMG') {
+        // Hide all cards in container1
+        document.querySelectorAll('#image-container1 .mdui-card').forEach(card => {
+            card.style.display = 'none';
+        });
+
+        // Only show the selected card
+        e.target.closest('.mdui-card').style.display = 'block';
+    }
+});
+
+// Handle click event for image-container2
+document.querySelector('#image-container2').addEventListener('click', function(e) {
+    if (e.target.tagName === 'IMG') {
+        // Hide all cards in container2
+        document.querySelectorAll('#image-container2 .mdui-card').forEach(card => {
+            card.style.display = 'none';
+        });
+
+        // Only show the selected card
+        e.target.closest('.mdui-card').style.display = 'block';
+    }
+});
+
+</script>
+{% endblock %}

@@ -1,0 +1,30 @@
+.selectable:hover {
+    cursor: pointer;  /* 当鼠标悬停在图片上时，将鼠标指针变为手形 */
+}
+
+.selected {
+    border: 5px solid #007BFF;  /* 为选中的图片添加一个蓝色边框 */
+    opacity: 0.7;  /* 使选中的图片变得稍微透明 */
+}
+
+.card-image {
+    width: 100%;         /* 使图片宽度与卡片外沿一致 */
+    max-height: 180px;   /* 设置一个最大高度，您可以根据需要调整这个值 */
+    display: block;      /* 去除图像下方的空隙 */
+    object-fit: cover;   /* 使图片内容按比例缩放并裁剪以适应容器大小 */
+    margin: 0 auto;      /* 使图片在卡片中居中显示 */
+}
+
+
+.custom-drawer {
+    overflow-y: auto;  // 垂直滚动
+}
+
+
+.custom-drawer .mdui-list-item {
+    font-size: 14px;  // 调整字体大小
+    margin: 8px 0;   // 调整上下间距
+}
+.custom-drawer {
+    width: 40% !important;
+}
